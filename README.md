@@ -1,6 +1,9 @@
-# A Django Website
+# Description
 
-User can Login/Logout and upload an image as their profile image
+A website that user can register an account and login/logout, make new posts
+and update/delete as well, the main feature is user can reset their own 
+passwords with google verification email and change their passwords,
+which is nice:))
 
 ## Demo
 
@@ -11,11 +14,11 @@ User can Login/Logout and upload an image as their profile image
 ```
 pip install -r requirements.txt
 ```
-
-### Running
-
 ```
 cd myproj
+```
+```
+mkdir media
 ```
 ```
 python manage.py makemigrations
@@ -23,11 +26,14 @@ python manage.py makemigrations
 ```
 python manage.py migrate
 ```
+
+### Running
+
 ```
 python manage.py runserver
 ```
 
-## Authors
+## Author
 
 * **Willy Huang**
 
