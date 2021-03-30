@@ -18,10 +18,19 @@ pip install -r requirements.txt
 cd myproj
 ```
 ```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
+```
 python manage.py runserver
 ```
 
 ## Authors
 
-* **Willy Huang** - *Initial work* - [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)
+* **Willy Huang**
 
+## Credits
+
+[Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)
