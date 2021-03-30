@@ -4,7 +4,7 @@ User can Login/Logout and upload an image as their profile image
 
 ## Demo
 
-![image](https://github.com/breezekiller789/Django_User_Login_Profile/blob/master/django_demo.gif)
+![image](https://github.com/breezekiller789/Django_Project/blob/master/django_demo.gif)
 
 
 ### Installing
