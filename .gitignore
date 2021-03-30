@@ -1,0 +1,7 @@
+*.pyc
+*.jpg
+*.png
+*.JPG
+*.PNG
+*.sqlite3
+*/__pycache__
