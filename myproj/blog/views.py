@@ -27,8 +27,14 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'    # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
+    context_data = {'title': 'Home'}
     ordering = ['-date_posted']
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(PostListView, self).get_context_data(**kwargs)
+        context['title'] = 'Home'
+        return context
 
 
 class UserPostListView(ListView):
@@ -37,9 +43,16 @@ class UserPostListView(ListView):
     context_object_name = 'posts'
     # ordering = ['-date_posted']
     paginate_by = 5
+
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
+
+    # 傳給前端頁面的base.html，我頁首要顯示使用者名稱。
+    def get_context_data(self, **kwargs):
+        context = super(UserPostListView, self).get_context_data(**kwargs)
+        context['title'] = self.kwargs.get('username')
+        return context
 
 
 # 讓使用者可以看到特定的文章
@@ -55,7 +68,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     # 讓django知道這則新貼文的作者就是這個請求的使用者
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        return super(PostCreateView, self).form_valid(form)
 
 
 # 讓使用者更新自己的貼文，為了避免其他人更改別人的貼文，所以要傳入
@@ -63,10 +76,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
+
     # 當使用者成功update之後，django會不知道要帶使用者回去哪邊，所以這個要在models.py裡面定義
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        return super(PostUpdateView, self).form_valid(form)
 
     # 這邊就是在避免他人刪除他人的文章，所以要檢查文章作者跟請求的使用者有無一樣
     def test_func(self):
