@@ -36,6 +36,8 @@ python manage.py runserver
 ## Author
 
 * **Willy Huang**
+* [My Website](https://breezekiller789.github.io/blog/)
+* [Linkedin](https://www.linkedin.com/in/jin-wei-huang-6a4105208/)
 
 ## Credits
 
